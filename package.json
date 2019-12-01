@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "scripts": {
     "bundle": "webpack",
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest",
     "start": "webpack-dev-server --mode development --open --hot --host 0.0.0.0",
     "build": "npm run type && webpack --mode production && npm run assets",
     "assets": "mv assets/* build/",
@@ -30,6 +30,9 @@
     "@storybook/addon-links": "^5.0.0",
     "@storybook/addons": "^5.0.0",
     "@storybook/react": "^5.0.0",
+    "@testing-library/jest-dom": "^4.2.4",
+    "@testing-library/react": "^9.3.2",
+    "@types/jest": "^24.0.23",
     "@types/react": "^16.9.6",
     "@types/react-dom": "^16.9.2",
     "@types/sha1": "^1.1.2",
@@ -37,6 +40,7 @@
     "@types/storybook__react": "^4.0.0",
     "@typescript-eslint/eslint-plugin": "^2.9.0",
     "@typescript-eslint/parser": "^2.9.0",
+    "babel-jest": "^24.9.0",
     "babel-loader": "^8.0.5",
     "comlink-loader": "^1.1.0",
     "css-loader": "^2.1.0",
@@ -49,6 +53,8 @@
     "file-loader": "^4.2.0",
     "html-webpack-plugin": "^3.2.0",
     "import-http": "^0.3.1",
+    "jest": "^24.9.0",
+    "jest-canvas-mock": "^2.2.0",
     "prettier": "^1.19.1",
     "style-loader": "^0.23.1",
     "typescript": "^3.6.4",
@@ -58,5 +64,14 @@
     "workbox-sw": "^4.3.1",
     "workbox-webpack-plugin": "^4.3.1",
     "worker-loader": "^2.0.0"
+  },
+  "jest": {
+    "setupFiles": [
+      "jest-canvas-mock"
+    ],
+    "moduleNameMapper": {
+      "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/__mocks__/fileMock.js",
+      "\\.(css|less)$": "<rootDir>/__mocks__/styleMock.js"
+    }
   }
 }

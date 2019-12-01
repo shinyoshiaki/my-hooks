@@ -2,17 +2,17 @@ import { useState } from "react";
 
 export default function useFile(): [
   File,
-  (setfile: any) => void,
+  (setFile: any) => void,
   (onSetFile: (a: File) => void) => void
 ] {
-  const [value, setvalue] = useState();
+  const [value, setValue] = useState();
   let cb: any;
-  const setfile = (e: any) => {
+  const setFile = (e: any) => {
     const file = e.target.files[0];
-    setvalue(file);
+    setValue(file);
     if (cb) cb(file);
   };
 
   const onSetFile = (_cb: (a: File) => void) => (cb = _cb);
-  return [value, setfile, onSetFile];
+  return [value, setFile, onSetFile];
 }
