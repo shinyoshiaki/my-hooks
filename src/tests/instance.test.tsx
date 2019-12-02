@@ -7,17 +7,14 @@ afterEach(cleanup);
 
 describe("TestInstance", () => {
   test("", () => {
-    const { getByText } = render(<TestInstance />);
-    let target = getByText("test");
-    expect(target).toBeDefined();
+    const { getByText, getByRole } = render(<TestInstance />);
+    const target = getByRole("test").textContent;
 
     const button = getByText("update");
     fireEvent.click(button);
-
     const num = getByText("1");
     expect(num).toBeDefined();
 
-    target = getByText("test");
-    expect(target).toBeDefined();
+    expect(target).toBe(getByRole("test").textContent);
   });
 });

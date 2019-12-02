@@ -8,12 +8,12 @@ class Some {
 
 export const TestInstance: FC = () => {
   const [num, setNum] = useState(0);
-  const [some] = useInstance(new Some("test"));
+  const [some] = useInstance(new Some(Math.random().toString()));
 
   return (
     <div>
-      <p>{num.toString()}</p>
-      <p>{some.s}</p>
+      <span>{num.toString()}</span>
+      <p role="test">{some.s}</p>
       <button onClick={() => setNum(prev => prev + 1)}>update</button>
     </div>
   );
