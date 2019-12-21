@@ -1,7 +1,5 @@
-import React, { FC, useState } from "react";
+import React, { FC, useRef, useState } from "react";
 import { cleanup, fireEvent, render } from "@testing-library/react";
-
-import { useInstance } from "../hooks/useInstance";
 
 class Some {
   constructor(public s: string) {}
@@ -9,7 +7,7 @@ class Some {
 
 const TestInstance: FC = () => {
   const [num, setNum] = useState(0);
-  const [some] = useInstance(new Some(Math.random().toString()));
+  const some = useRef(new Some(Math.random().toString())).current;
 
   return (
     <div>
