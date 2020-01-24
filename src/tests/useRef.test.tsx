@@ -17,9 +17,7 @@ const Test: FC = () => {
   const [example, setExample] = useConst<Example>();
   const [num, setNum] = useState(0);
 
-  useEffect(() => {
-    setExample(new Example());
-  }, [setExample]);
+  useEffect(() => setExample(new Example()), [setExample]);
 
   return (
     <div>
