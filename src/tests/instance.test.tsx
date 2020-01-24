@@ -23,7 +23,7 @@ const TestInstance: FC = () => {
 afterEach(cleanup);
 
 describe("TestInstance", () => {
-  test("", () => {
+  test("test", () => {
     const { getByText, getByRole } = render(<TestInstance />);
     const target = getByRole("test").textContent;
 
